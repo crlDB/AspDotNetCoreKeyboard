@@ -16,6 +16,12 @@ var webpack = require('webpack');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
+// vendor - libs
+var vendorAlias = {
+    lib_jqueryposition: "jquery-ui/ui/position.js",
+    lib_virtualkeyboard: "virtual-keyboard/dist/js/jquery.keyboard.js"
+};
+
     
 module.exports = [
     {
@@ -24,7 +30,9 @@ module.exports = [
         entry: {
             "lib.vendor1": [
                 'jquery',
-                'bootstrap'             
+                'bootstrap',
+                'lib_virtualkeyboard',
+                'lib_jqueryposition'
             ]
         },
         optimization: {
@@ -40,12 +48,17 @@ module.exports = [
             }
         },
 
-
         output: {
             path: path.resolve(__dirname, 'wwwroot'),
             filename: '[name].bundle.js',
             library: "vendor_[hash]"
         },
+
+        resolve: {
+            alias: vendorAlias,
+            extensions: ['.ts', '.tsx', '.js']
+        },
+
         plugins: [
             new webpack.ProvidePlugin({
                 jQuery: 'jquery',
@@ -72,6 +85,12 @@ module.exports = [
             path: path.resolve(__dirname, 'wwwroot'),
             filename: '[name].bundle.js'
         },
+
+        resolve: {
+            alias: vendorAlias,
+            extensions: ['.ts', '.tsx', '.js']
+        },
+
         module: {
             rules: [
                 {
