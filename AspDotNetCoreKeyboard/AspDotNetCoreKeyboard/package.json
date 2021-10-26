@@ -17,7 +17,7 @@
     "@types/bootstrap": "4.3.0",
     "@types/virtual-keyboard": "1.26.1",
     "jquery": "3.3.1",
-    "jquery-ui": "1.12.1",
+    "jquery-ui": "1.13.0",
     "bootstrap": "4.3.1",
     "popper.js": "1.15.0",
     "virtual-keyboard": "1.28.9"
